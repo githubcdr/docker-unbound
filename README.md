@@ -1,6 +1,6 @@
 # Minimal recursive resolver
 
-Minimal unbound installation based on Alpine Linux at 9mb.
+Minimal unbound installation based on Alpine Linux at 6mb.
 
 * Support for DNSSEC
 * Absolute minimal config
