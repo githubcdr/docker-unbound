@@ -1,5 +1,13 @@
 FROM alpine:latest
-MAINTAINER me codar nl
+
+# meta
+LABEL \
+	org.label-schema.maintainer="me codar nl" \
+	org.label-schema.name="unbound" \
+	org.label-schema.description="Docker version of Unbound based on Alpine Linux" \
+	org.label-schema.version="1.0" \
+	org.label-schema.vcs-url="https://github.com/githubcdr/docker-unbound" \
+	org.label-schema.schema-version="1.0"
 
 RUN apk add --update --no-cache unbound curl ca-certificates s6 \
             && curl -o /etc/unbound/root.hints https://www.internic.net/domain/named.cache
