@@ -1,9 +1,13 @@
 name: 'build tagged images'
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  #push:
+  #  tags:
+  #    - 'v*.*.*'
+  schedule:
+    - cron: '5 4 * * *'
+  release:
+    types: [published]
 
 jobs:
   docker:
