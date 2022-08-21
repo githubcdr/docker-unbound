@@ -2,6 +2,8 @@
 
 Minimal unbound installation based on Alpine Linux at 6mb.
 
+Forked from https://github.com/githubcdr/docker-unbound
+
 * Support for DNSSEC
 * Absolute minimal config
 
