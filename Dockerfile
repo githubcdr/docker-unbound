@@ -1,4 +1,4 @@
-FROM alpine:20231219
+FROM alpine:20240315
 
 # meta
 LABEL \
