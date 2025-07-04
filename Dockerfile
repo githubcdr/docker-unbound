@@ -9,8 +9,14 @@ LABEL \
 	org.label-schema.vcs-url="https://github.com/githubcdr/docker-unbound" \
 	org.label-schema.schema-version="1.0"
 
-RUN apk add --update --no-cache unbound curl ca-certificates s6 \
-            && curl -o /etc/unbound/root.hints https://www.internic.net/domain/named.cache
+
+RUN apk add --update --no-cache unbound curl openssl ca-certificates s6 
+
+RUN mkdir -p /var/lib/unbound \
+ && curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache \
+ && chmod 755 /var/lib/unbound \
+ && chmod 644 /var/lib/unbound/root.hints \
+ && chown -R unbound:unbound /var/lib/unbound
 
 # add files, this also creates the layout for the filesystem
 COPY files/root/ /
