@@ -22,4 +22,4 @@ RUN    chmod a+x /service/*/run
 EXPOSE 53/udp 53/tcp
 
 # manage with s6
-ENTRYPOINT ["/bin/s6-svscan","/service"]
+ENTRYPOINT ["/usr/bin/s6-svscan","/service"]
