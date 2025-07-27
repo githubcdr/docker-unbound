@@ -1,4 +1,4 @@
-FROM alpine:20250108
+FROM alpine:3.22.1
 
 # meta
 LABEL \
@@ -10,7 +10,7 @@ LABEL \
 	org.label-schema.schema-version="1.0"
 
 
-RUN apk add --update --no-cache unbound curl openssl ca-certificates s6 
+RUN apk add --no-cache unbound curl openssl ca-certificates s6 
 
 RUN mkdir -p /var/lib/unbound \
  && curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache \
