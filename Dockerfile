@@ -1,4 +1,4 @@
-FROM alpine:3.24.0
+FROM alpine:3.24.1
 LABEL org.opencontainers.image.maintainer="https://github.com/githubcdr" \
 	org.opencontainers.image.source="https://github.com/githubcdr/docker-unbound/" \
 	org.opencontainers.image.url="https://hub.docker.com/repository/docker/cdrocker/unbound" \
