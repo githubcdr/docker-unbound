@@ -7,20 +7,21 @@ LABEL org.opencontainers.image.maintainer="https://github.com/githubcdr" \
 	org.opencontainers.image.version="v1"
 
 RUN apk add --no-cache unbound curl openssl ca-certificates s6 \
-	&& mkdir -p /var/lib/unbound \
- 	&& curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache \
- 	&& chmod 755 /var/lib/unbound \
- 	&& chmod 644 /var/lib/unbound/root.hints \
- 	&& chown -R unbound:unbound /var/lib/unbound
+	&& mkdir -p /var/lib/unbound/keys \
+	&& curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache \
+	&& chmod 755 /var/lib/unbound /var/lib/unbound/keys \
+	&& chmod 644 /var/lib/unbound/root.hints \
+	&& chown -R unbound:unbound /var/lib/unbound
 
 # add files, this also creates the layout for the filesystem
 COPY files/root/ /
 
 # fixups
-RUN chmod a+x /service/*/run
+RUN chmod a+x /entrypoint.sh /service/*/run
 
 # ready to run
 EXPOSE 53/udp 53/tcp
+VOLUME ["/var/lib/unbound/keys"]
 
 # manage with s6
-ENTRYPOINT ["/usr/bin/s6-svscan", "/service"]
+ENTRYPOINT ["/entrypoint.sh"]

@@ -1,0 +1,13 @@
+services:
+  unbound:
+    image: cdrocker/unbound
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - unbound-root-key:/var/lib/unbound/keys
+
+volumes:
+  unbound-root-key:
+    name: unbound-root-key
